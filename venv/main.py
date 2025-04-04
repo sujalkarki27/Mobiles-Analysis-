@@ -35,7 +35,7 @@ df.rename(columns={'Mobile Weight':'Mobile Weight (grams)',
                   'Screen Size':'Screen Size (inches)'}, inplace=True)
 
 # Plot chart for the RAM Distribution
-sns.set_style("whitegrid")
+sns.set_style("darkgrid")
 sns.set_palette('pastel')
 plt.figure(figsize=(15, 5))
 sns.countplot(x='RAM (GB)', data=df, edgecolor='black')
