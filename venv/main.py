@@ -44,3 +44,26 @@ plt.ylabel('Distribution')
 plt.title('RAM Distribution')
 plt.xticks(rotation=0);
 plt.show()
+
+# Plot the market share of the mobile companies
+plt.figure(figsize=(15,5))
+sns.barplot(x='Company Name', y='Launched Price (USA)', data=df, edgecolor='black')
+
+plt.xticks(rotation=45)
+plt.xlabel('Mobile Companies')
+plt.ylabel('Market Share')
+plt.title('Mobile Companies Market Share')
+
+plt.show()
+
+# Plot the number of phone brands per Company
+plt.figure(figsize=(15, 5))
+
+sns.countplot(x='Company Name', data=df, order=df['Company Name'].value_counts().index, edgecolor='black')
+
+plt.xticks(rotation=45)
+plt.xlabel('Mobile Companies')
+plt.ylabel('Frequency')
+plt.title('Distribution of Mobile Companies')
+
+plt.show()
