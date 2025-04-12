@@ -7,7 +7,8 @@ import seaborn as sns
 df=pd.read_csv("/Users/sujalkarki/Desktop/Mobile Project /Mobiles.csv",encoding='latin1')
 print(df.head(5)) #display the first 5 rows
 print(df.columns)  #display the columns of the dataset
-df.info()   # Get the summary of the dataset
+print(df.isnull().sum)
+print(df.info())   # Get the summary of the dataset
 
 # Change the value type of some columns from string to float
 numeric_columns = ['Mobile Weight', 'RAM', 'Front Camera', 'Back Camera', 'Battery Capacity', 
@@ -66,4 +67,24 @@ plt.xlabel('Mobile Companies')
 plt.ylabel('Frequency')
 plt.title('Distribution of Mobile Companies')
 
+plt.show()
+
+# Top 10 Phones with Largest Battery
+top_battery = df.sort_values(by='Battery Capacity (mAh)', ascending=False).head(10)
+
+# plot the top 10 phone with largest battery 
+plt.figure(figsize=(12,6))
+sns.barplot(x='Model Name', y='Battery Capacity (mAh)', data=top_battery, palette='crest')
+plt.title('Top 10 Phones with Largest Battery')
+plt.xticks(rotation=45)
+plt.show()
+
+#  Most Expensive Phone per Company
+idx = df.groupby('Company Name')['Launched Price (USA)'].idxmax()
+most_expensive = df.loc[idx]
+
+plt.figure(figsize=(12,6))
+sns.barplot(x='Company Name', y='Launched Price (USA)', data=most_expensive, palette='magma')
+plt.title('Most Expensive Phone per Company')
+plt.xticks(rotation=45)
 plt.show()
