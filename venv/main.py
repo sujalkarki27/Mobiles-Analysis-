@@ -139,6 +139,35 @@ plt.legend(title='Brand')
 plt.tight_layout()
 plt.show()
 
+# ___________Analysis 
+df['Price Diff (USA - India)'] = df['Launched Price (USA)'] - df['Launched Price (India)']
+df['Price Diff (China - India)'] = df['Launched Price (China)'] - df['Launched Price (India)']
+df['Price Diff (Dubai - India)'] = df['Launched Price (Dubai)'] - df['Launched Price (India)']
+df['Price Diff (Pakistan - India)'] = df['Launched Price (Pakistan)'] - df['Launched Price (India)']
+
+# Find Phones with the Highest Price Gaps
+price_diff_cols = [
+    'Price Diff (USA - India)',
+    'Price Diff (China - India)',
+    'Price Diff (Dubai - India)',
+    'Price Diff (Pakistan - India)'
+]
+top_diff = df[['Model Name', 'Company Name'] + price_diff_cols].sort_values(by='Price Diff (USA - India)', ascending=False).head(10)
+print(top_diff)
+top_diff_chart = df.sort_values(by='Price Diff (USA - India)', ascending=False).head(10)
+
+# Visualize Price Difference (USA vs India)
+plt.figure(figsize=(12,6))
+sns.barplot(x='Model Name', y='Price Diff (USA - India)', data=top_diff_chart, hue='Company Name', dodge=False, palette='magma')
+plt.title('Top 10 Phones with Highest Price Difference (USA vs India)')
+plt.ylabel('Price Difference (₹)')
+plt.xlabel('Model Name')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+
+
 
 
 
