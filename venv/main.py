@@ -112,9 +112,34 @@ plt.tight_layout()
 plt.show()
 
 
-
-# __________Filter for phones launched in India under ₹20,000________
+# _____________Analysis for Best RAM mobile Phone in the range of 20000.____________
+# Filter for phones launched in India under ₹20,000.
 phones_under_20k = df[df['Launched Price (India)'] <= 20000]
+# Sort them by RAM
+best_ram_under_20k = phones_under_20k.sort_values(by='RAM (GB)', ascending=False)
+# Display top 10
+print(best_ram_under_20k[['Model Name', 'Company Name', 'RAM (GB)', 'Launched Price (India)']].head(10))
+
+# Visualize the top 10 phones with the best RAM under 20000
+plt.figure(figsize=(12,6))
+sns.barplot(
+    x='Model Name',
+    y='RAM (GB)',
+    data=best_ram_under_20k.head(10),
+    hue='Company Name',
+    dodge=False,
+    palette='pastel'
+)
+
+plt.title('Top RAM Phones Under ₹20,000')
+plt.xlabel('Model Name')
+plt.ylabel('RAM (GB)')
+plt.xticks(rotation=45)
+plt.legend(title='Brand')
+plt.tight_layout()
+plt.show()
+
+
 
 
 
