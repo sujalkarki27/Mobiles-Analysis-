@@ -27,7 +27,7 @@ for x in expressions:
 
 df['Screen Size'] = df['Screen Size'].apply(lambda x: x.split(' ')[0]).astype(float)
 
-# Add the units of measurement into the relevant columns
+#__________ Add the units of measurement into the relevant columns_________
 df.rename(columns={'Mobile Weight':'Mobile Weight (grams)', 
                    'Front Camera':'Front Camera (MP)',
                    'RAM':'RAM (GB)',
@@ -43,7 +43,7 @@ sns.countplot(x='RAM (GB)', data=df, edgecolor='black')
 plt.xlabel('RAM (GB)')
 plt.ylabel('Distribution')
 plt.title('RAM Distribution')
-plt.xticks(rotation=0);
+plt.xticks(rotation=0)
 plt.show()
 
 # Plot the market share of the mobile companies
@@ -69,7 +69,7 @@ plt.title('Distribution of Mobile Companies')
 
 plt.show()
 
-# Top 10 Phones with Largest Battery
+# _______________Top 10 Phones with Largest Battery____________
 top_battery = df.sort_values(by='Battery Capacity (mAh)', ascending=False).head(10)
 
 # plot the top 10 phone with largest battery 
@@ -79,12 +79,43 @@ plt.title('Top 10 Phones with Largest Battery')
 plt.xticks(rotation=45)
 plt.show()
 
-#  Most Expensive Phone per Company
+#_____________ Most Expensive Phone per Company________________
 idx = df.groupby('Company Name')['Launched Price (USA)'].idxmax()
 most_expensive = df.loc[idx]
 
+# plot the most expensive phone per company
 plt.figure(figsize=(12,6))
 sns.barplot(x='Company Name', y='Launched Price (USA)', data=most_expensive, palette='magma')
 plt.title('Most Expensive Phone per Company')
 plt.xticks(rotation=45)
 plt.show()
+
+# _____________Correlation Analysis______________
+plt.figure(figsize=(12,6))
+sns.heatmap(df.corr(numeric_only=True), annot=True, cmap='coolwarm', fmt=".2f")
+plt.title('Correlation Matrix')
+plt.show()
+
+# ____________Analysis for Best Camera phone _____________
+df['Total Camera (MP)'] = df['Front Camera (MP)'] + df['BackCamera (MP)']
+top_camera_phones = df.sort_values(by='Total Camera (MP)', ascending=False).head(10)
+print(top_camera_phones[['Model Name', 'Company Name', 'Front Camera (MP)', 'BackCamera (MP)', 'Total Camera (MP)']])
+
+plt.figure(figsize=(12,6))
+sns.barplot(x='Model Name', y='Total Camera (MP)', data=top_camera_phones, hue='Company Name', dodge=False, palette='viridis')
+plt.title('Top 10 Phones with Best Camera Setup (Front + Back MP)')
+plt.ylabel('Total Camera Megapixels')
+plt.xlabel('Phone Model')
+plt.xticks(rotation=45)
+plt.legend(title='Brand')
+plt.tight_layout()
+plt.show()
+
+
+
+# __________Filter for phones launched in India under ₹20,000________
+phones_under_20k = df[df['Launched Price (India)'] <= 20000]
+
+
+
+
