@@ -200,6 +200,20 @@ print(best_phone[['Model Name', 'Company Name', 'Overall Score']])
 # Top 10 phones by Overall Score
 top_10_overall = df.sort_values(by='Overall Score', ascending=False).head(10)
 
+# Top 10 phones by Overall Score
+top_10_overall = df.sort_values(by='Overall Score', ascending=False).head(10)
+
+plt.figure(figsize=(12, 6))
+sns.barplot(
+    x='Model Name',
+    y='Overall Score',
+    hue='Company Name',
+    data=top_10_overall,
+    dodge=False,
+    palette='rocket'
+)
+
+
 
 
 
