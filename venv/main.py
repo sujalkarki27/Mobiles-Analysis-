@@ -197,6 +197,11 @@ best_phone = df.sort_values(by='Overall Score', ascending=False).head(1)
 print("📱 Best Phone Overall:")
 print(best_phone[['Model Name', 'Company Name', 'Overall Score']])
 
+# Top 10 phones by Overall Score
+top_10_overall = df.sort_values(by='Overall Score', ascending=False).head(10)
+
+
+
 
 
 
