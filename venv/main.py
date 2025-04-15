@@ -166,7 +166,7 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
-
+# _______________Analysis for  top 10 phone by Overall Score_________________
 # Total Camera Score (Front + Back)
 df['Total Camera (MP)'] = df['Front Camera (MP)'] + df['BackCamera (MP)']
 
@@ -203,6 +203,7 @@ top_10_overall = df.sort_values(by='Overall Score', ascending=False).head(10)
 # Top 10 phones by Overall Score
 top_10_overall = df.sort_values(by='Overall Score', ascending=False).head(10)
 
+# Visualize the top 10 phone by Overall Score
 plt.figure(figsize=(12, 6))
 sns.barplot(
     x='Model Name',
@@ -212,6 +213,8 @@ sns.barplot(
     dodge=False,
     palette='rocket'
 )
+plt.title('Top 10 Best Overall Phones (Based on Combined Specs)', fontsize=14)
+plt.xlabel('Phone Model')
 
 
 
