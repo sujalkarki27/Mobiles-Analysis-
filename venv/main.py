@@ -167,6 +167,41 @@ plt.tight_layout()
 plt.show()
 
 
+# Total Camera Score (Front + Back)
+df['Total Camera (MP)'] = df['Front Camera (MP)'] + df['BackCamera (MP)']
+
+# Manual Min-Max Normalization
+def min_max_normalize(series):
+    return (series - series.min()) / (series.max() - series.min())
+
+# Normalize each feature manually
+df['RAM_norm'] = min_max_normalize(df['RAM (GB)'])
+df['Battery_norm'] = min_max_normalize(df['Battery Capacity (mAh)'])
+df['Camera_norm'] = min_max_normalize(df['Total Camera (MP)'])
+df['Screen_norm'] = min_max_normalize(df['Screen Size (inches)'])
+df['Price_norm'] = min_max_normalize(df['Launched Price (India)'])
+
+# Calculate overall score (higher is better, lower price is better)
+df['Overall Score'] = (
+    df['RAM_norm'] +
+    df['Battery_norm'] +
+    df['Camera_norm'] +
+    df['Screen_norm'] -
+    df['Price_norm']  # Subtract price because higher price is less desirable
+)
+
+# Get the best phone model
+best_phone = df.sort_values(by='Overall Score', ascending=False).head(1)
+
+# Display the best phone
+print("📱 Best Phone Overall:")
+print(best_phone[['Model Name', 'Company Name', 'Overall Score']])
+
+
+
+
+
+
 
 
 
