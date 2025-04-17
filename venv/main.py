@@ -215,6 +215,24 @@ sns.barplot(
 )
 plt.title('Top 10 Best Overall Phones (Based on Combined Specs)', fontsize=14)
 plt.xlabel('Phone Model')
+plt.ylabel('Overall Score')
+plt.xticks(rotation=45, ha='right')
+plt.legend(title='Brand')
+plt.tight_layout()
+plt.show()
+
+# ____________Analysis for Best Country to Buy a Phone_________
+# _______List of countries and their launch price columns________
+country_price_columns = {
+    'India': 'Launched Price (India)',
+    'USA': 'Launched Price (USA)',
+    'China': 'Launched Price (China)',
+    'Dubai': 'Launched Price (Dubai)',
+    'Pakistan': 'Launched Price (Pakistan)'
+}
+
+
+
 
 
 
