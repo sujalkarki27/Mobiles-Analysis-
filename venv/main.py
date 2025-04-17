@@ -231,6 +231,10 @@ country_price_columns = {
     'Pakistan': 'Launched Price (Pakistan)'
 }
 
+# Calculate average price per country
+avg_prices = {country: df[col].mean() for country, col in country_price_columns.items()}
+avg_prices_df = pd.DataFrame(list(avg_prices.items()), columns=['Country', 'Average Price'])
+
 
 
 
