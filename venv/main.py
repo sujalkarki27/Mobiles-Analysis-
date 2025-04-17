@@ -242,6 +242,11 @@ best_country = avg_prices_df.loc[avg_prices_df['Average Price'].idxmin()]
 print("🌍 Best Country to Buy a Phone:")
 print(best_country)
 
+# Visualize
+plt.figure(figsize=(10, 5))
+sns.barplot(x='Country', y='Average Price', data=avg_prices_df, palette='coolwarm', edgecolor='black')
+
+
 
 
 
