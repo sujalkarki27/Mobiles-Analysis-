@@ -249,6 +249,7 @@ plt.title('Average Mobile Phone Prices by Country')
 plt.ylabel('Average Price (₹)')
 plt.xlabel('Country')
 plt.tight_layout()
+plt.show()
 
 
 
