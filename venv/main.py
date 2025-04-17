@@ -235,6 +235,14 @@ country_price_columns = {
 avg_prices = {country: df[col].mean() for country, col in country_price_columns.items()}
 avg_prices_df = pd.DataFrame(list(avg_prices.items()), columns=['Country', 'Average Price'])
 
+# Find the country with the lowest average price
+best_country = avg_prices_df.loc[avg_prices_df['Average Price'].idxmin()]
+
+# Display
+print("🌍 Best Country to Buy a Phone:")
+print(best_country)
+
+
 
 
 
