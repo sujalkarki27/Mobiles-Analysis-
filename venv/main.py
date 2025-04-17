@@ -245,6 +245,8 @@ print(best_country)
 # Visualize
 plt.figure(figsize=(10, 5))
 sns.barplot(x='Country', y='Average Price', data=avg_prices_df, palette='coolwarm', edgecolor='black')
+plt.title('Average Mobile Phone Prices by Country')
+plt.ylabel('Average Price (₹)')
 
 
 
