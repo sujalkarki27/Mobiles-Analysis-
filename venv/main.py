@@ -251,7 +251,9 @@ plt.xlabel('Country')
 plt.tight_layout()
 plt.show()
 
-
+#___________best mocbile comp[any in processor ___________
+mob_processor = df.groupby('Company Name')['Processor'].sum()
+#sort the vlauew in ascending order
 
 
 
