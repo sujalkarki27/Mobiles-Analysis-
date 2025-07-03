@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns 
-
+ 
 # Load the dataset
 df=pd.read_csv("/Users/sujalkarki/Desktop/Mobile Project /Mobiles.csv",encoding='latin1')
 print(df.head(5)) #display the first 5 rows
