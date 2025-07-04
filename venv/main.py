@@ -200,8 +200,6 @@ print(best_phone[['Model Name', 'Company Name', 'Overall Score']])
 # Top 10 phones by Overall Score
 top_10_overall = df.sort_values(by='Overall Score', ascending=False).head(10)
 
-# Top 10 phones by Overall Score
-top_10_overall = df.sort_values(by='Overall Score', ascending=False).head(10)
 
 # Visualize the top 10 phone by Overall Score
 plt.figure(figsize=(12, 6))
@@ -254,6 +252,8 @@ plt.show()
 #___________best mocbile comp[any in processor ___________
 mob_processor = df.groupby('Company Name')['Processor'].sum()
 #sort the vlauew in ascending order
+mob__p = df.sort_values(by='Processor',ascending=False).head(10)
+
 
 
 
